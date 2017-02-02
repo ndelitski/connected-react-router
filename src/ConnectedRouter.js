@@ -18,7 +18,7 @@ export class ConnectedRouter extends Component {
 
     // Subscribe to store changes
     this.unsubscribe = context.store.subscribe(() => {
-      const locationInStore = context.store.getState().router.location.pathname
+      const locationInStore = context.store.getState().getIn([ 'router', 'location', 'pathname' ])
       const locationInHistory = props.history.location.pathname
 
       // If we do time travelling, the location in store is changed but location in history is not changed
@@ -47,7 +47,6 @@ export class ConnectedRouter extends Component {
 
   render() {
     const { action, location, history, basename, children } = this.props
-
     return (
       <StaticRouter
         action={action}
@@ -87,8 +86,8 @@ ConnectedRouter.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  action: state.router.action,
-  location: state.router.location,
+  action: state.getIn([ 'router', 'action' ]),
+  location: state.getIn([ 'router', 'location' ]).toJS(),
 })
 
 const mapDispatchToProps = dispatch => ({
