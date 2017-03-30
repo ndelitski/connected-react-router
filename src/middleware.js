@@ -8,10 +8,11 @@ import { CALL_HISTORY_METHOD, GO_BACK_OR_URL, go, goBack } from './actions'
 const routerMiddleware = history => store => next => action => { // eslint-disable-line no-unused-vars
   if (action.type === GO_BACK_OR_URL) {
     if (history.length === 1) {
-      return next(go(action.payload))
+      history.go(action.payload)
     } else {
-      return next(goBack())
+      history.goBack()
     }
+    return
   }
 
   if (action.type !== CALL_HISTORY_METHOD) {
