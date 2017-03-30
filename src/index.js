@@ -3,7 +3,8 @@ export connectRouter from './reducer'
 
 export {
   CALL_HISTORY_METHOD,
-  push, replace, go, goBack, goForward,
+  GO_BACK_OR_URL,
+  push, replace, go, goBack, goForward, goBackOrUrl,
   routerActions
 } from './actions'
 

@@ -3,6 +3,7 @@
  * receives a location change.
  */
 export const LOCATION_CHANGE = '@@router/LOCATION_CHANGE'
+export const GO_BACK_OR_URL = '@@router/GO_BACK_OR_URL'
 
 export const onLocationChanged = (location, action) => ({
   type: LOCATION_CHANGE,
@@ -28,6 +29,11 @@ const updateLocation = (method) => {
     }
   })
 }
+
+export const goBackOrUrl = (url) => ({
+    type: GO_BACK_OR_URL,
+    payload: url
+})
 
 /**
  * These actions correspond to the history API.
